@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+import pickle
 # Create your views here.
 def index(request):
     return render(request,'index.html')
@@ -7,8 +7,26 @@ def index(request):
 def about(request):
     return render(request,'about.html')
 
-def form1(request):
-    return render(request,'form1.html')
+def diabetes_form(request):
+    return render(request,'diabetes_form.html')
+
+def diabetes_result(request):
+    model=pickle.load(open('diabetes_model.sav','rb'))
+    name=request.GET['name']
+    age=request.GET['age']
+    Gender=request.GET['gender']
+    Gender=Gender.lower()
+    pregnencies=request.GET['pregnencies']
+    glucose=request.GET['glucose']
+    bp=request.GET['bp']
+    insulin=request.GET['insulin']
+    skinthickness=request.GET['skinthickness']
+    bmi=request.GET['bmi']
+    dpf=request.GET['dpf']
+    x={'m':1,'f':0}
+    print(model.predict([[pregnencies,glucose,bp,skinthickness,insulin,bmi,dpf,age]]))
+    ans=model.predict([[pregnencies,glucose,bp,skinthickness,insulin,bmi,dpf,age]])
+    return render(request,'diabetes_result.html',{'ans':ans[0]})
 # def services(request):
 #     return render(request,'services.html')
 

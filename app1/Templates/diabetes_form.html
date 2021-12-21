@@ -13,6 +13,7 @@ font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 font-size: 0.8em;
 width: 70em;
 padding: 1em;
+margin: 1em;
 border: 1px solid rgb(92, 92, 92);
 background-color: #ccc;
 }
@@ -38,6 +39,7 @@ font-weight: normal;
 }
 
 .myForm input[type="text"],
+.myForm input[type="number"],
 .myForm input[type="tel"],
 .myForm input[type="email"],
 .myForm input[type="datetime-local"],
@@ -50,7 +52,9 @@ font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 font-size: 0.9em;
 padding: 0.3em;
 }
-
+.myForm input:focus{
+outline: none;
+}
 .myForm textarea {
 height: 100px;
 resize: none;
@@ -78,32 +82,60 @@ margin-top: 1em;
 <div class="container">
     <img id="form-vector" src="../static/vector_1.jpg" alt="intro-vector" />
     
-    <form class="myForm" method="get" enctype="application/x-www-form-urlencoded" action="/">
-        
+    <form class="myForm" method="GET" action={% url 'diabetes_result' %}>
+        {% csrf_token %}
         <p>
 <label>Name
-    <input type="text" name="customer_name" required>
+    <input type="text" name="name" required>
 </label> 
 </p>
-
 <p>
-    <label>Phone 
-<input type="tel" name="phone_number">
+    <label>Age
+        <input type="number" name="age" required>
+    </label> 
+    </p>
+<p>
+    <fieldset>
+        <legend>Gender</legend>
+        <label class="choice"> <input type="radio" name="gender" required value="Male"> Male </label>
+        <label class="choice"> <input type="radio" name="gender" required value="Female"> Female </label>
+        <label class="choice"> <input type="radio" name="gender" required value="Other"> Other </label>
+        </fieldset>
+    <label>Number of Pregnancies(In case of Male, enter 0) <br>
+<input type="number" name="Pregnancies" required>
 </label>
 </p>
 
 <p>
-    <label>Email 
-        <input type="email" name="email_address">
+    <label>Glucose Level <br>
+        <input type="number" name="glucose" min="0" max="250" required placeholder="0-250">
     </label>
 </p>
-
-<fieldset>
-    <legend>Gender</legend>
-<p><label class="choice"> <input type="radio" name="gender" required value="Male"> Male </label></p>
-<p><label class="choice"> <input type="radio" name="gender" required value="Female"> Female </label></p>
-<p><label class="choice"> <input type="radio" name="gender" required value="Other"> Other </label></p>
-</fieldset>
+<p>
+    <label>Blood Pressure <br>
+        <input type="number" name="bp" min="0" max="200" required placeholder="0-200">
+    </label>
+</p>
+<p>
+    <label>Skin Thickness
+        <input type="number" name="skinthickness" min="0" max="100" required placeholder="0-100">
+    </label>
+</p>
+<p>
+    <label>Insulin Level
+        <input type="number" name="insulin" min="0" max="200" required placeholder="0-200">
+    </label>
+</p>
+<p>
+    <label>Body Mass Index
+        <input type="number" name="bmi" min="0" max="100" required placeholder="0-100">
+    </label>
+</p>
+<p>
+    <label>Diabetes Padigree Function
+        <input type="number" name="dpf" min="0" max="3" required placeholder="0-3">
+    </label>
+</p>
 
 <!-- <fieldset>
     <legend>Extras</legend>
@@ -112,11 +144,11 @@ margin-top: 1em;
     <p><label class="choice"> <input type="checkbox" name="extras" value="tip"> Stock Tip </label></p>
 </fieldset> -->
 
-<p>
+<!-- <p>
     <label>Date of Birth
         <input type="date" name="pickup_time" required>
     </label>
-</p>
+</p> -->
 
 <!-- <p>
     <label>Pickup Place

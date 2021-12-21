@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+ {% block css %}
+
+{% endblock css %} 
+{% block title %} 
+
+{% endblock title %} 
+{% block body %}
+<h1>Your result are as follows</h1>
+{% if ans %}
+<h3>You have diabetes.</h3>
+<!-- <figure>
+<img src="{% static 'success.jpg' %}">
+</figure> -->
+{% else %}
+<h3>you don't have diabetes.</h3>
+<!-- <figure>
+<img src="{% static 'failure.png' %}">
+</figure> -->
+{% endif %}
+{% endblock body %}
