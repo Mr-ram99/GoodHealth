@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block css %}
+<link rel="stylesheet" href="../static/index.css" />
+{% endblock css %} 
+{% block title %} Home {% endblock title %} 
+{% block body %}
+<div id="index-front">
+    <div id="intro-text">
+        <strong>Check your health</strong><br> from the comfort of your home</strong>
+    </div>
+    <img id="intro-vector" src="../static/illust_2.png" alt="intro-vector" />
+</div>
+<div id="select-disease">
+    <ul>
+        <li class="model"><a class="model-link" href="/form1">model</a></li>
+        <li class="model"><a class="model-link" href="/">model</a></li>
+        <li class="model"><a class="model-link" href="/">model</a></li>
+        <li class="model"><a class="model-link" href="/">model</a></li>
+        <li class="model"><a class="model-link" href="/">model</a></li>
+        <li class="model"><a class="model-link" href="/">model</a></li>
+    </ul>
+
+</div>
+{% endblock body %}
