@@ -11,7 +11,7 @@ def diabetes_form(request):
     return render(request,'diabetes_form.html')
 
 def diabetes_result(request):
-    model=pickle.load(open('diabetes_model.sav','rb'))
+    model=pickle.load(open('app1/Models/diabetes_model.sav','rb'))
     name=request.GET['name']
     age=request.GET['age']
     Gender=request.GET['gender']

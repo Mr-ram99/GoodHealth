@@ -1,0 +1,18 @@
+.result-container{
+    text-align: center;
+}
+#result-image{
+    width: 50%;
+    height: auto;
+}
+#yes{
+    color: red;
+}
+#no{
+    color: green;
+}
+@media screen and (max-width:500px) {
+    #result-image{
+        width: 90%;
+    }
+}
